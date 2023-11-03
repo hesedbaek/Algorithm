@@ -4,8 +4,9 @@
 #define fastio() ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 using namespace std;
 
-int n, mn, km[100002], total[100002], mon[100002];
-long long sum;
+int n;
+int km[100002], mon[100002];
+long long sum, total[100002];
 vector<pair<int, int>> v, vv;
 
 int main(){
@@ -27,14 +28,11 @@ int main(){
 	
 	int j = n-2;
 	for(int i=0; i<n; i++){
+	//	cout<<"v.f, v.s: "<<v[i].first<<" "<<v[i].second<<" ";
 		if(v[i].second <= j){
-			if(v[i].second == 0 ){
-				sum += v[i].first * total[0];
-				continue;
-			}
-			
 			sum += v[i].first*(total[j] - total[v[i].second-1]);
 			j = v[i].second -1;
+		//	cout<<sum<<" "<<j<<'\n';
 		//	cout<<"f, s: "<<v[i].first<<" "<<v[i].second<<'\n';
 		}
 	}
