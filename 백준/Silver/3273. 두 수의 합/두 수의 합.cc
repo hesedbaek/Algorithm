@@ -1,21 +1,28 @@
 #include <iostream>
 #include <algorithm>
+#define fastio() ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 using namespace std;
+typedef long long ll;
 
-int n, x, a[100002];
+int n, t, cnt, a[100002];
+string s;
 
 int main(){
+	fastio();
 	cin>>n;
 	for(int i=0; i<n; i++)	cin>>a[i];
-	cin>>x;
-	
+	cin>>t;
 	sort(a, a+n);
 	
-	int l = 0, r=n-1, ret =0;
-	while(l<r){
-		if(a[l]+a[r] == x)	r--, ret++;
-		else if(a[l]+a[r] <x)	l++;
-		else r--;
+	int st =0, en =n-1;
+	while(st<en){
+		if(a[st]+a[en]>t)	en--;
+		else if(a[st]+a[en]<t)	st++;
+		else{
+			cnt++;
+			en--;
+		}
 	}
-	cout<<ret;
+	cout<<cnt;
+	
 }
